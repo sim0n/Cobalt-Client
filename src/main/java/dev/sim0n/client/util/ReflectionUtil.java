@@ -10,10 +10,11 @@ public class ReflectionUtil {
     public Field getField(Class clazz, String fieldName) {
         try {
             Field field = clazz.getDeclaredField(fieldName);
+
             field.setAccessible(true);
 
             return field;
-        } catch (NoSuchFieldException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException(clazz.getSimpleName() + ":" + fieldName);
         }
     }

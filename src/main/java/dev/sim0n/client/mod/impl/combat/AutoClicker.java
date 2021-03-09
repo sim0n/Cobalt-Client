@@ -18,7 +18,7 @@ import org.lwjgl.input.Mouse;
 import java.lang.reflect.Field;
 
 public class AutoClicker extends Mod {
-    private final Field clickCounterField;
+    private Field clickCounterField;
 
     private long nextLUp, nextLDown;
 
@@ -38,7 +38,11 @@ public class AutoClicker extends Mod {
     public AutoClicker() {
         super("AutoClicker", ModType.COMBAT);
 
-        clickCounterField = ReflectionUtil.getField(Minecraft.class, "leftClickCounter");
+        try {
+            clickCounterField = ReflectionUtil.getField(Minecraft.class, "leftClickCounter");
+        } catch (IllegalArgumentException e) {
+            clickCounterField = ReflectionUtil.getField(Minecraft.class, "field_71429_W");
+        }
 
         addSetting(minCps);
         addSetting(maxCps);
