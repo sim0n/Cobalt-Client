@@ -23,8 +23,7 @@ public class Reach extends Mod {
     public Reach() {
         super("Reach", ModType.COMBAT);
 
-        addSetting(range);
-        addSetting(expansion);
+        addSettings(range, expansion);
 
         try {
             this.canRiderInteractMethod = Entity.class.getDeclaredMethod("canRiderInteract");

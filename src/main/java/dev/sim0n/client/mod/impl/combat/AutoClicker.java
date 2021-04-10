@@ -44,10 +44,7 @@ public class AutoClicker extends Mod {
             clickCounterField = ReflectionUtil.getField(Minecraft.class, "field_71429_W");
         }
 
-        addSetting(minCps);
-        addSetting(maxCps);
-        addSetting(disableClickDelay);
-        addSetting(disableOnBlock);
+        addSettings(minCps, maxCps, disableClickDelay, disableOnBlock);
 
         registerEventHandler(ClientTickEvent.class, (ClientTickEvent event) -> {
             if (mc.thePlayer == null)

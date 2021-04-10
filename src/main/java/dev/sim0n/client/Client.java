@@ -2,6 +2,7 @@ package dev.sim0n.client;
 
 import dev.sim0n.client.event.forge.FEventListener;
 import dev.sim0n.client.event.forge.impl.FClientTickListener;
+import dev.sim0n.client.event.forge.impl.FLivingUpdateListener;
 import dev.sim0n.client.event.forge.impl.FPacketListener;
 import dev.sim0n.client.event.forge.impl.FRenderTickListener;
 import dev.sim0n.client.manager.CommandManager;
@@ -43,6 +44,7 @@ public class Client {
         forgeListeners.add(new FRenderTickListener());
         forgeListeners.add(new FClientTickListener());
         forgeListeners.add(new FPacketListener());
+        forgeListeners.add(new FLivingUpdateListener());
 
         forgeListeners.forEach(FEventListener::register);
     }

@@ -3,6 +3,7 @@ package dev.sim0n.client.manager;
 import dev.sim0n.client.mod.Mod;
 import dev.sim0n.client.mod.impl.combat.AutoClicker;
 import dev.sim0n.client.mod.impl.combat.Reach;
+import dev.sim0n.client.mod.impl.combat.Velocity;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public class ModManager {
     private static final List<Class<? extends Mod>> MOD_CLASSES = Arrays.asList(
-            AutoClicker.class, Reach.class
+            AutoClicker.class, Reach.class, Velocity.class
     );
 
     @Getter

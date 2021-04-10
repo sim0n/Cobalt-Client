@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 @Getter
 public abstract class Mod {
@@ -33,12 +34,20 @@ public abstract class Mod {
         this.type = type;
     }
 
-    protected <T> void registerEventHandler(Class<? extends Event> clazz, Consumer<T> handlerConsumer) {
-        eventHandlers.add(EventFactory.create(clazz, handlerConsumer));
+    protected final <E> void registerEventHandler(Class<E> clazz, Consumer<E> handlerConsumer, Predicate<E> condition) {
+        eventHandlers.add(EventFactory.create((Class<? extends Event>) clazz, handlerConsumer, condition));
+    }
+
+    protected final <E> void registerEventHandler(Class<E> clazz, Consumer<E> handlerConsumer) {
+        eventHandlers.add(EventFactory.create((Class<? extends Event>) clazz, handlerConsumer));
     }
 
     protected <T extends Setting> void addSetting(T t) {
-        this.settings.add(t);
+        settings.add(t);
+    }
+
+    protected <T extends Setting> void addSettings(T... t) {
+        Collections.addAll(settings, t);
     }
 
     @SuppressWarnings("unchecked") private <T extends Setting> T getSetting(String name) {

@@ -76,15 +76,6 @@ public class FPacketListener extends FEventListener {
 
 
                 if (message.startsWith(".") && FPacketListener.this.client.getCommandManager().handleCommand(message.substring(1))) {
-                    GuiNewChat gui = Minecraft.getMinecraft().ingameGUI.getChatGUI();
-
-                    for (int i = 0; i < gui.getSentMessages().size(); i++) {
-                        if (gui.getSentMessages().get(i).equals(message)) {
-                            gui.getSentMessages().remove(i);
-                            break;
-                        }
-                    }
-
                     return; // cancel chat message
                 }
             }
