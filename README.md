@@ -6,5 +6,7 @@ Cobalt is command based, the prefix is `.`
 
 ## Commands
 .autoclicker
+
 .reach
+
 .velocity
